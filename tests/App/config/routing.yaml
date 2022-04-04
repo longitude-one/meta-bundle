@@ -4,3 +4,7 @@
 standalone_foobar:
   path: /
   controller: LongitudeOne\MetaBundle\Tests\App\Controller\FooController::barAction
+
+standalone_meta:
+  path: /meta
+  controller: LongitudeOne\MetaBundle\Tests\App\Controller\FooController::metaAction

@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+#  App\:
+#    resource: '../src/*'
+#    exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+#
+  LongitudeOne\MetaBundle\Tests\App\Controller\:
+    resource: '../Controller'
+    tags: ['controller.service_arguments']

@@ -6,22 +6,31 @@ use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 
 class FooControllerTest extends WebTestCase
 {
-    private ?KernelBrowser $client = null;
+    private static ?KernelBrowser $client = null;
 
-    public function setUp(): void
+    public static function setUpBeforeClass(): void
     {
-        $this->client = static::createClient();
+        parent::setUpBeforeClass();
+        static::$client = static::createClient();
     }
 
-    public function tearDown(): void
+    public static function tearDownAfterClass(): void
     {
-        $this->client = null;
+        static::$client = null;
+        parent::tearDownAfterClass();
     }
 
-    public function testBarAction()
+    public function testBarAction(): void
     {
-        $this->client->request('GET', '/');
+        static::$client->request('GET', '/');
 
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertTrue(static::$client->getResponse()->isSuccessful(), 'Response of Request / is not successful. Functional tests failed and will fail.');
+    }
+
+    public function testMetaAction(): void
+    {
+        static::$client->request('GET', '/meta');
+
+        $this->assertTrue(static::$client->getResponse()->isSuccessful(), 'Response of Request /meta is not successful. The MetaBundle is failing.');
     }
 }

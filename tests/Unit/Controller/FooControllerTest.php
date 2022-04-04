@@ -22,7 +22,12 @@ class FooControllerTest extends TestCase
         parent::tearDown();
     }
 
-    public function testBarAction()
+    public function testBarAction(): void
+    {
+        $this->assertInstanceOf(JsonResponse::class, $this->controller->barAction());
+    }
+
+    public function testMetaAction(): void
     {
         $this->assertInstanceOf(JsonResponse::class, $this->controller->barAction());
     }
