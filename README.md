@@ -43,11 +43,9 @@ Optionally, edit the `tools/php-cs-fixer/.php-cs-fixer.php`.
 PHP-CS-FIXER is now set :)
 
 ````shell
-docker exec my_bundle-php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src --config=tools/php-cs-fixer/.php-cs-fixer.php
-docker exec my_bundle-php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix tests --config=tools/php-cs-fixer/.php-cs-fixer.php
+docker exec my_bundle-php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --config=tools/php-cs-fixer/.php-cs-fixer.php
 ````
 If you don't use docker:
 ````shell
-tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src --config=tools/php-cs-fixer/.php-cs-fixer.php
-tools/php-cs-fixer/vendor/bin/php-cs-fixer fix tests --config=tools/php-cs-fixer/.php-cs-fixer.php
+tools/php-cs-fixer/vendor/bin/php-cs-fixer src --config=tools/php-cs-fixer/.php-cs-fixer.php
 ````

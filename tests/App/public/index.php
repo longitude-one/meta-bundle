@@ -1,8 +1,18 @@
 <?php
 
+/**
+ * Meta Bundle
+ *
+ * PHP 8 | Symfony 5.4 | 6
+ *
+ * Copyright LongitudeOne - Alexandre Tranchant
+ *
+ * Copyright 2021 - 2022
+ */
+
 namespace LongitudeOne\MetaBundle\Tests\App;
 
-require_once __DIR__ . '/../../../vendor/autoload.php';
+require_once __DIR__.'/../../../vendor/autoload.php';
 
 use Symfony\Component\HttpFoundation\Request;
 

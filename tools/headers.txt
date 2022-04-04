@@ -1,3 +1,7 @@
-If you see this, you certainly forgot to update the tools/php-cs-fixer/headers.txt file.
-Copyright LongitudeOne - Alexandre Tranchant (you can remove these line, its a sample)
+Meta Bundle
+
+PHP 8 | Symfony 5.4 | 6
+
+Copyright LongitudeOne - Alexandre Tranchant
+
 Copyright 2021 - %year%
