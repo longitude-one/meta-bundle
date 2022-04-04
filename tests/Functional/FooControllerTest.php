@@ -1,6 +1,6 @@
 <?php
 
-namespace LongitudeOne\CookiesConsentBundle\Tests\Functional;
+namespace LongitudeOne\MetaBundle\Tests\Functional;
 
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 

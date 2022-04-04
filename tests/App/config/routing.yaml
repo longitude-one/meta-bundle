@@ -1,2 +1,6 @@
-_main:
-  resource: ../../../src/Resources/config/routing.yaml
+#_main:
+#  resource: ../../../src/Resources/config/routing.yaml
+
+standalone_foobar:
+  path: /
+  controller: LongitudeOne\MetaBundle\Tests\App\Controller\FooController::barAction

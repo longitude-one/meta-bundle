@@ -1,10 +1,10 @@
 <?php
 
-namespace LongitudeOne\CookiesConsentBundle;
+namespace LongitudeOne\MetaBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class CookiesConsentBundle extends Bundle
+class MetaBundle extends Bundle
 {
     public function getPath(): string
     {

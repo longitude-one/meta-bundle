@@ -1,7 +1,8 @@
 <?php
 
+namespace LongitudeOne\MetaBundle\Tests\Unit\Controller;
 
-use LongitudeOne\CookiesConsentBundle\Controller\FooController;
+use LongitudeOne\MetaBundle\Tests\App\Controller\FooController;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 

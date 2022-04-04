@@ -16,7 +16,7 @@
     </php>
 
     <testsuites>
-        <testsuite name="CookiesConsentBundle Suite">
+        <testsuite name="MetaBundle Suite">
             <directory suffix="Test.php">./tests/</directory>
         </testsuite>
     </testsuites>

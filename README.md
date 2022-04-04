@@ -1,20 +1,8 @@
-# Bundle template
-
-This package is a bundle template to help you to:
-* create a new bundle 
-* with a dummy controller (feel free to delete it)
-* with an embedded application to test your bundle
-* with phpunit unit test on a dummy controller (feel free to delete this test)
-* with phpunit function test on this dummy controller (feel free to delete this test)
-* with phpcsfixer deployed as an external tool
-
 ## Installation with Docker
 A very simple docker is embedded to:
 * provide you a PHP8.1 environment
 * provide you composer, symfony and phpcsfixer as external tools
 * launch local symfony server to help you to dev
-
-First, edit the .env file and update the two parameters.
 
 Then simply build your container:
 ````shell
@@ -37,7 +25,7 @@ symfony server:start --dir /var/www/tests/App/public
 # How to test your bundle?
 Your new bundle is created and ready to be test (replace my_bundle-php with the name of your php container):
 ````shell
-docker exec my_bundle-php ./vendor/bin/phpunit
+docker exec bundle-php ./vendor/bin/phpunit
 ````
 If you don't use docker:
 ````shell

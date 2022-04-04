@@ -1,8 +1,8 @@
 <?php
 
-namespace LongitudeOne\CookiesConsentBundle\Tests\Functional;
+namespace LongitudeOne\MetaBundle\Tests\Functional;
 
-use LongitudeOne\CookiesConsentBundle\Tests\App\AppKernel;
+use LongitudeOne\MetaBundle\Tests\App\AppKernel;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as SymfonyWebTestCase;
 
 abstract class WebTestCase extends SymfonyWebTestCase

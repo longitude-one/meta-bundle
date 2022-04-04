@@ -1,20 +1,20 @@
 {
-  "name": "longitude-one/cookies-consent-bundle",
-  "description": "A Symfony bundle to manage cookies with respect and morality (and bootstrap 5.1)",
+  "name": "longitude-one/meta-bundle",
+  "description": "A Symfony bundle to manage meta tags",
   "type": "bundle",
   "license": "MIT",
   "require": {
-    "php": "^7.4|^8.0",
+    "php": "^8.0",
     "symfony/http-kernel": "^4.4|^5.4|^6.0"
   },
   "autoload": {
     "psr-4": {
-      "LongitudeOne\\CookiesConsentBundle\\": "src/"
+      "LongitudeOne\\MetaBundle\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "LongitudeOne\\CookiesConsentBundle\\Tests\\": "tests/"
+      "LongitudeOne\\MetaBundle\\Tests\\": "tests/"
     }
   },
   "require-dev": {

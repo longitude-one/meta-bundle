@@ -1,10 +1,10 @@
 <?php
 
-namespace LongitudeOne\CookiesConsentBundle\Tests\App;
+namespace LongitudeOne\MetaBundle\Tests\App;
 
 use Exception;
 use JetBrains\PhpStorm\Pure;
-use LongitudeOne\CookiesConsentBundle\CookiesConsentBundle;
+use LongitudeOne\MetaBundle\MetaBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
@@ -16,7 +16,7 @@ class AppKernel extends Kernel
     {
         return [
             new FrameworkBundle(),
-            new CookiesConsentBundle(),
+            new MetaBundle(),
         ];
     }
 

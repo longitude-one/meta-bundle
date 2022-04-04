@@ -1,6 +1,6 @@
 <?php
 
-namespace LongitudeOne\CookiesConsentBundle\Tests\App;
+namespace LongitudeOne\MetaBundle\Tests\App;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 

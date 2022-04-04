@@ -1,6 +1,6 @@
 <?php
 
-namespace LongitudeOne\CookiesConsentBundle\Controller;
+namespace LongitudeOne\MetaBundle\Tests\App\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
