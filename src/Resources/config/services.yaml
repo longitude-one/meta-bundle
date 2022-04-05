@@ -1,0 +1,6 @@
+services:
+   longitude-one.meta.service:
+      resource: '../../src/Service/MetaService.php'
+   longitude-one.meta.extension:
+      resource: '../../src/Twig/MetaExtension.php'
+      arguments: '@longitude-one.meta.service'

@@ -32,15 +32,44 @@ class FooControllerTest extends WebTestCase
 
     public function testBarAction(): void
     {
-        static::$client->request('GET', '/');
+        static::$client->request('GET', '/json');
 
-        $this->assertTrue(static::$client->getResponse()->isSuccessful(), 'Response of Request / is not successful. Functional tests failed and will fail.');
+        static::assertTrue(static::$client->getResponse()->isSuccessful(), 'Response of Request /json is not successful. Functional tests are not well initialized.');
     }
 
-    public function testMetaAction(): void
+    public function testCustomMeta(): void
     {
         static::$client->request('GET', '/meta');
+        $response = static::$client->getResponse();
+        static::assertTrue($response->isSuccessful(), 'Response of Request /meta is not successful. The MetaBundle is failing.');
+        static::assertStringContainsString('Description for /meta url', $response->getContent());
+        static::assertStringContainsString('Image for /meta url', $response->getContent());
+        static::assertStringContainsString('Title for /meta url', $response->getContent());
 
-        $this->assertTrue(static::$client->getResponse()->isSuccessful(), 'Response of Request /meta is not successful. The MetaBundle is failing.');
+        static::assertStringNotContainsString('My default description', $response->getContent());
+        static::assertStringNotContainsString('My default image', $response->getContent());
+        static::assertStringNotContainsString('My default title', $response->getContent());
+    }
+
+    public function testDefaultMeta(): void
+    {
+        static::$client->request('GET', '/foo');
+        $response = static::$client->getResponse();
+        static::assertTrue($response->isSuccessful());
+
+        static::assertStringContainsString('My default description', $response->getContent());
+        static::assertStringContainsString('My default image', $response->getContent());
+        static::assertStringContainsString('My default title', $response->getContent());
+    }
+
+    public function testMetaWithQuotes(): void
+    {
+        static::$client->request('GET', '/quote');
+        $response = static::$client->getResponse();
+        static::assertTrue($response->isSuccessful());
+
+        static::assertStringContainsString('Description contains a &quot;quote&quot; for /quote url', $response->getContent(), 'MetaBundle is no more quote-proof');
+        static::assertStringContainsString('Image contains a &quot;quote&quot; for /quote url', $response->getContent(), 'MetaBundle is no more quote-proof');
+        static::assertStringContainsString('Title contains a &quot;quote&quot; for /quote url', $response->getContent(), 'MetaBundle is no more quote-proof');
     }
 }

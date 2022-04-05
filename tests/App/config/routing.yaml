@@ -2,9 +2,21 @@
 #  resource: ../../../src/Resources/config/routing.yaml
 
 standalone_foobar:
-  path: /
+  path: /json
   controller: LongitudeOne\MetaBundle\Tests\App\Controller\FooController::barAction
 
 standalone_meta:
   path: /meta
+  controller: LongitudeOne\MetaBundle\Tests\App\Controller\FooController::metaAction
+
+standalone_home_slash:
+  path: /
+  controller: LongitudeOne\MetaBundle\Tests\App\Controller\FooController::metaAction
+
+standalone_foo:
+  path: '/foo'
+  controller: LongitudeOne\MetaBundle\Tests\App\Controller\FooController::metaAction
+
+standalone_quote:
+  path: '/quote'
   controller: LongitudeOne\MetaBundle\Tests\App\Controller\FooController::metaAction

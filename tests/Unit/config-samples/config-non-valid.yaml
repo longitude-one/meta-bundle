@@ -1,0 +1,4 @@
+defaults:
+  descriptions: 'This is not the good key and it should throw an exception'
+  images: 'This is not the good key and it should throw an exception'
+  titles: 'This is not the good key and it should throw an exception'

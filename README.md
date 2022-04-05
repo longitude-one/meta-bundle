@@ -1,51 +1,74 @@
-## Installation with Docker
+#MetaBundle : longitude-one/meta-bundle
+
+This bundle provides a Twig extension and an easy configurable file to customize contents of all your meta tags.
+
+## Installation
+```shell
+composer require longitude-one/meta-bundle
+```
+
+## Configuration
+Edit your twig base view to call functions `meta_description()`, `meta_image()`, '`meta_title()`' implemented by our twig extension.
+
+Example:
+```html
+<!-- templates/base.html.twig -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="description" content="{{ meta_description() }}" />
+    <meta property="og:image" content="{{ meta_image() }}" />
+    <title>{{ meta_title() }}</title>
+</head>
+<body></body>
+</html>
+```
+
+Create or edit the bundle configuration file and 
+
+```yaml
+# config/packages/meta.yaml
+meta:
+  defaults:
+    description: 'My default description' # the default description
+    image: 'My default image' # the default image
+    title: 'My default title' # the default title
+  paths:
+    '/foo/bar/': # For this url, our extension will return customs 
+      description: 'My custom description for /foo/bar url'
+      image: 'My custom image for /foo/bar url'
+      title: 'My custom title for /foo/bar url'
+    '/bar': #For this url, our extension will return a custom title and the default image and title.
+      title: 'My custom description for /bar url'
+```
+
+#Contributing
+
+* Fork the github project.
+* Clone it
+
 A very simple docker is embedded to:
-* provide you a PHP8.1 environment
-* provide you composer, symfony and phpcsfixer as external tools
-* launch local symfony server to help you to dev
+  * provide you a PHP8.1 environment
+  * provide you composer, symfony and phpcsfixer as external tools
+  * launch local symfony server to help you to dev
 
 Then simply build your container:
 ````shell
 docker-compose up --build
 ````
-With your browser, you can access the provided dummy controller by accessing the symfony local server http://127.0.0.1/
 
-# Installation without docker
-If you dislike docker, you can install all this stuff with the following commands, but you need to install PHP, composer
-and Symfony on your system.
-````shell
-## Install the needed libraries
-composer install
-## Install PHP-CS-FIXER
-composer require --working-dir=tools/php-cs-fixer friendsofphp/php-cs-fixer
-## Start the localserver. You can access it via http://127.0.0.1:8000/
-symfony server:start --dir /var/www/tests/App/public
-````
+With your browser, you can access the embedded application by accessing the symfony local server http://127.0.0.1/
 
-# How to test your bundle?
-Your new bundle is created and ready to be test (replace my_bundle-php with the name of your php container):
+Update the code, fix bugs or implement new feature, then check the test.
+
 ````shell
 docker exec bundle-php ./vendor/bin/phpunit
 ````
-If you don't use docker:
+
+Check quality code with PHP-CS-FIXER:
+ 
 ````shell
-./vendor/bin/phpunit
+docker exec bundle-php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --config=tools/php-cs-fixer/.php-cs-fixer.php
 ````
 
-# How to fix your code and add a copyright on your files?
-This package comes with a configured phpcsfixer. The configuration is set to respect the @Symfony rules and add a header
-on your files :)
-
-First, edit the `tools/headers.txt` file.
-
-Optionally, edit the `tools/php-cs-fixer/.php-cs-fixer.php`.
-
-PHP-CS-FIXER is now set :)
-
-````shell
-docker exec my_bundle-php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --config=tools/php-cs-fixer/.php-cs-fixer.php
-````
-If you don't use docker:
-````shell
-tools/php-cs-fixer/vendor/bin/php-cs-fixer src --config=tools/php-cs-fixer/.php-cs-fixer.php
-````
+All is OK ? commit your code, push it and pull request it ;)

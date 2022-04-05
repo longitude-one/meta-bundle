@@ -1,0 +1,4 @@
+defaults:
+  description: 'My default description'
+  image: 'My default image'
+  title: 'My default title'

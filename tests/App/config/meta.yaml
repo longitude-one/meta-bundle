@@ -1,0 +1,22 @@
+meta:
+  defaults:
+    description: 'My default description'
+    image: 'My default image'
+    title: 'My default title'
+  paths:
+    '/meta':
+      description: 'Description for /meta url'
+      image: 'Image for /meta url'
+      title: 'Title for /meta url'
+    '':
+      description: 'Description for empty url'
+      image: 'Image for empty url'
+      title: 'Title for empty url'
+    '/':
+      description: 'Description for / url'
+      image: 'Image for / url'
+      title: 'Title for / url'
+    '/quote':
+      description: 'Description contains a "quote" for /quote url'
+      image: 'Image contains a "quote" for /quote url'
+      title: 'Title contains a "quote" for /quote url'
