@@ -12,6 +12,7 @@
 
 namespace LongitudeOne\MetaBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -24,22 +25,14 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('meta');
 
-        $treeBuilder->getRootNode()
-            ->children()
-                ->arrayNode('defaults')->children()
-                    ->scalarNode('description')->defaultValue('')->end()
-                    ->scalarNode('image')->defaultValue('')->end()
-                    ->scalarNode('title')->defaultValue('')->end()
-//                    ->arrayPrototype()->defaultValue('')->end()
-                ->end()->end()
+        $treeBuilder->getRootNode()->children()
+                ->arrayNode('defaults')
+                    ->scalarPrototype()->end()
+                ->end()
                 ->arrayNode('paths')
-                    ->arrayPrototype()->children()
-                        ->scalarNode('description')->defaultValue('')->end()
-                        ->scalarNode('image')->defaultValue('')->end()
-                        ->scalarNode('title')->defaultValue('')->end()
-//                        ->arrayPrototype()->defaultValue('')->end()
-                    ->end()
-                ->end()->end()
+                    ->useAttributeAsKey('name')
+                    ->variablePrototype()->end()
+                ->end()
             ->end();
 
         return $treeBuilder;

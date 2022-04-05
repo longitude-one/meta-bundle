@@ -12,14 +12,12 @@
 
 namespace LongitudeOne\MetaBundle\Service;
 
-use JetBrains\PhpStorm\ArrayShape;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class MetaService implements MetaServiceInterface
 {
     public function __construct(
-        #[ArrayShape(['description' => 'string', 'image' => 'string', 'title' => 'string'])]
         private array $defaults,
         private array $paths,
         private RequestStack $requestStack
@@ -38,7 +36,7 @@ class MetaService implements MetaServiceInterface
             return $this->defaults[$metaTag];
         }
 
-        return '';
+        return ''; //TODO throw exception
     }
 
     private function getMetaForCurrentPathInfo(string $meta): false|string

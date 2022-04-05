@@ -7,7 +7,7 @@
 {#    <meta property="og:title" content="{{ meta_title() }}" />#}
 {#    <meta property="og:description" content="{{ meta_description() }}" />#}
 {#    <meta property="og:url" content="" />#}
-    <meta property="og:image" content="{{ meta_image() }}" />
+    <meta property="og:image" content="{{ meta('og:image') }}" />
 {#    <meta property="og:type" content="website" />#}
 {#    <link rel="canonical" href="" />#}
 {#    <meta name="author" content="" />#}
@@ -17,7 +17,7 @@
     <dt>Meta description</dt>
     <dd>{{ meta_description() }}</dd>
     <dt>Meta image</dt>
-    <dd>{{ meta_image() }}</dd>
+    <dd>{{ meta('og:image') }}</dd>
     <dt>Meta title</dt>
     <dd>{{ meta_title() }}</dd>
 </dl>

@@ -12,9 +12,9 @@
 
 namespace LongitudeOne\MetaBundle\Twig;
 
-use JetBrains\PhpStorm\Pure;
 use LongitudeOne\MetaBundle\Service\MetaService;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 class MetaExtension extends AbstractExtension
@@ -25,30 +25,37 @@ class MetaExtension extends AbstractExtension
     }
 
     /**
+     * @return TwigFilter[]
+     */
+    public function getFilters(): array
+    {
+        return [
+            new TwigFilter('meta', [$this, 'getCustomMeta']),
+        ];
+    }
+
+    /**
      * @return TwigFunction[]
      */
     public function getFunctions(): array
     {
         return [
             new TwigFunction('meta_description', [$this, 'getDescription']),
-            new TwigFunction('meta_image', [$this, 'getImage']),
             new TwigFunction('meta_title', [$this, 'getTitle']),
+            new TwigFunction('meta', [$this, 'getCustomMeta']),
         ];
     }
 
-    #[Pure]
+    public function getCustomMeta($meta): string
+    {
+        return $this->service->getMetaContent($meta);
+    }
+
     public function getDescription(): string
     {
         return $this->service->getMetaContent('description');
     }
 
-    #[Pure]
-    public function getImage(): string
-    {
-        return $this->service->getMetaContent('image');
-    }
-
-    #[Pure]
     public function getTitle(): string
     {
         return $this->service->getMetaContent('title');
