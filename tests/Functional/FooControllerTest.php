@@ -13,6 +13,7 @@
 namespace LongitudeOne\MetaBundle\Tests\Functional;
 
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use Symfony\Component\HttpFoundation\Response;
 
 class FooControllerTest extends WebTestCase
 {
@@ -71,5 +72,14 @@ class FooControllerTest extends WebTestCase
         static::assertStringContainsString('Description contains a &quot;quote&quot; for /quote url', $response->getContent(), 'MetaBundle is no more quote-proof');
         static::assertStringContainsString('Image contains a &quot;quote&quot; for /quote url', $response->getContent(), 'MetaBundle is no more quote-proof');
         static::assertStringContainsString('Title contains a &quot;quote&quot; for /quote url', $response->getContent(), 'MetaBundle is no more quote-proof');
+    }
+
+    public function testMetaWithInvalidArgument(): void
+    {
+        static::$client->request('GET', '/invalid');
+        $response = static::$client->getResponse();
+        static::assertFalse($response->isSuccessful());
+        static::assertSame(Response::HTTP_INTERNAL_SERVER_ERROR, $response->getStatusCode());
+        static::assertStringContainsString('&quot;foo:bar&quot; is not a valid meta-tag.', $response->getContent());
     }
 }

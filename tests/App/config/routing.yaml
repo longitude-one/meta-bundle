@@ -20,3 +20,7 @@ standalone_foo:
 standalone_quote:
   path: '/quote'
   controller: LongitudeOne\MetaBundle\Tests\App\Controller\FooController::metaAction
+
+standalone_invalid:
+  path: '/invalid'
+  controller: LongitudeOne\MetaBundle\Tests\App\Controller\FooController::invalidAction

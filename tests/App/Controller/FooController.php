@@ -23,6 +23,11 @@ class FooController extends AbstractController
         return new JsonResponse(['foo' => 'bar']);
     }
 
+    public function invalidAction(): Response
+    {
+        return $this->render('meta-non-valid.html.twig');
+    }
+
     public function metaAction(): Response
     {
         return $this->render('meta.html.twig');

@@ -12,6 +12,7 @@
 
 namespace LongitudeOne\MetaBundle\Service;
 
+use LongitudeOne\MetaBundle\Exception\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -36,7 +37,7 @@ class MetaService implements MetaServiceInterface
             return $this->defaults[$metaTag];
         }
 
-        return ''; // TODO throw exception
+        throw new InvalidArgumentException(sprintf('"%s" is not a valid meta-tag. Did you mispell it ? Did you miss to declare it in your configuration files? By default, the configuration is in the /config/package/meta.yml file)', $metaTag));
     }
 
     private function getMetaForCurrentPathInfo(string $meta): false|string
