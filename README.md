@@ -1,4 +1,4 @@
-#MetaBundle : longitude-one/meta-bundle
+# MetaBundle : longitude-one/meta-bundle
 
 This bundle provides a Twig extension and an easy configurable file to customize contents of all your meta tags.
 
@@ -8,7 +8,7 @@ composer require longitude-one/meta-bundle
 ```
 
 ## Configuration
-Edit your twig base view to call functions `meta_description()`, `meta_image()`, '`meta_title()`' implemented by our twig extension.
+Edit your twig base view to call functions `meta_description()`, `meta_title()`, `meta('foo:bar')` implemented by our twig extension.
 
 Example:
 ```html
@@ -17,7 +17,7 @@ Example:
 <html lang="fr">
 <head>
     <meta name="description" content="{{ meta_description() }}" />
-    <meta property="og:image" content="{{ meta_image() }}" />
+    <meta property="og:image" content="{{ meta('og:image') }}" />
     <title>{{ meta_title() }}</title>
 </head>
 <body></body>
@@ -31,12 +31,12 @@ Create or edit the bundle configuration file and
 meta:
   defaults:
     description: 'My default description' # the default description
-    image: 'My default image' # the default image
+    'og-image': 'My default image' # the default image
     title: 'My default title' # the default title
   paths:
     '/foo/bar/': # For this url, our extension will return customs 
       description: 'My custom description for /foo/bar url'
-      image: 'My custom image for /foo/bar url'
+      'og-image': 'My custom image for /foo/bar url'
       title: 'My custom title for /foo/bar url'
     '/bar': #For this url, our extension will return a custom title and the default image and title.
       title: 'My custom description for /bar url'
