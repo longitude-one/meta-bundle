@@ -42,7 +42,7 @@ meta:
       title: 'My custom description for /bar url'
 ```
 
-#Contributing
+# Contributing
 
 * Fork the github project.
 * Clone it
