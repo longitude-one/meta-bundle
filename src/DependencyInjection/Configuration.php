@@ -12,7 +12,6 @@
 
 namespace LongitudeOne\MetaBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -27,11 +26,17 @@ class Configuration implements ConfigurationInterface
 
         $treeBuilder->getRootNode()->children()
                 ->arrayNode('defaults')
+                    ->defaultValue([])
                     ->scalarPrototype()->end()
                 ->end()
                 ->arrayNode('paths')
-                    ->useAttributeAsKey('name')
-                    ->variablePrototype()->end()
+                    ->defaultValue([])
+                    ->useAttributeAsKey('url')
+                    ->arrayPrototype()
+                        ->scalarPrototype()
+                            ->validate()->ifArray()->thenInvalid('Tag content shall be a string')->end()
+                        ->end()
+                    ->end()
                 ->end()
             ->end();
 

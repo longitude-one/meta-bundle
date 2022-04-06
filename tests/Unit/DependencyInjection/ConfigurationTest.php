@@ -23,34 +23,75 @@ class ConfigurationTest extends TestCase
     public function testNonValidConfiguration(): void
     {
         self::expectException(InvalidConfigurationException::class);
-        self::expectExceptionMessage('Unrecognized options "descriptions, images, titles" under "meta.defaults". Did you mean "description", "image", "title"?');
+        self::expectExceptionMessage('Invalid type for path "meta.paths./mon_url.bad_tag_content". Expected "scalar", but got "array".');
 
-        $this->process('config-non-valid.yaml');
+        $this->processFile('config-non-valid.yaml');
+    }
+
+    public function testEmptyConfiguration(): void
+    {
+        $metaArray = $this->process('');
+        self::assertSame($metaArray, [
+            'defaults' => [],
+            'paths' => [],
+        ]);
     }
 
     public function testValidConfiguration(): void
     {
-        $this->process('config-valid.yaml');
-        self::assertTrue(true); // No exceptions have been thrown
+        $metaArray = $this->processFile('config-valid.yaml');
+        self::assertSame($metaArray, [
+            'defaults' => [
+                'description' => 'My default description',
+                'image' => 'My default image',
+                'title' => 'My default title',
+            ],
+            'paths' => [
+                '/meta' => [
+                    'description' => 'Description for /meta url',
+                    'image' => 'Image for /meta url',
+                    'title' => 'Title for /meta url',
+                ],
+                '/' => [
+                    'description' => 'Description for / url',
+                    'image' => '',
+                    'title' => 'Title for / url',
+                ],
+            ],
+        ]);
     }
 
     public function testValidSmall(): void
     {
-        $this->process('config-valid-small.yaml');
-        self::assertTrue(true); // No exceptions have been thrown
+        $metaArray = $this->processFile('config-valid-small.yaml');
+        self::assertSame($metaArray, [
+            'defaults' => [
+                'description' => 'My default description',
+                'image' => 'My default image',
+                'title' => 'My default title',
+            ],
+            'paths' => [],
+        ]);
     }
 
-    private function process(string $filename): void
+    private function processFile(string $filename): array
     {
-        $config = Yaml::parse(file_get_contents(__DIR__.'/../config-samples/'.$filename));
+        return $this->process(file_get_contents(__DIR__.'/../config-samples/'.$filename));
+    }
+
+    private function process(string $content): array
+    {
+        $config = Yaml::parse($content);
 
         $configs = [$config];
 
         $processor = new Processor();
         $metaConfiguration = new Configuration();
-        $processor->processConfiguration(
+        $result = $processor->processConfiguration(
             $metaConfiguration,
             $configs
         );
+
+        return $result;
     }
 }

@@ -1,4 +1,7 @@
 defaults:
-  descriptions: 'This is not the good key and it should throw an exception'
-  images: 'This is not the good key and it should throw an exception'
-  titles: 'This is not the good key and it should throw an exception'
+  description: 'foo'
+  title: 'foo'
+paths:
+  '/mon_url':
+    good_tag_content: 'possible'
+    bad_tag_content: ['not', 'possible']

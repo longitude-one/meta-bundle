@@ -36,7 +36,7 @@ class MetaService implements MetaServiceInterface
             return $this->defaults[$metaTag];
         }
 
-        return ''; //TODO throw exception
+        return ''; // TODO throw exception
     }
 
     private function getMetaForCurrentPathInfo(string $meta): false|string
