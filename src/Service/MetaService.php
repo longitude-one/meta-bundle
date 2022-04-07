@@ -40,7 +40,7 @@ class MetaService implements MetaServiceInterface
         throw new InvalidArgumentException(sprintf('"%s" is not a valid meta-tag. Did you mispell it ? Did you miss to declare it in your configuration files? By default, the configuration is in the /config/package/meta.yml file)', $metaTag));
     }
 
-    private function getMetaForCurrentPathInfo(string $meta): false|string
+    private function getMetaForCurrentPathInfo(string $meta): mixed
     {
         $request = $this->requestStack->getCurrentRequest();
 

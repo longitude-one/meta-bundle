@@ -42,7 +42,7 @@ class FooControllerTest extends WebTestCase
     {
         static::$client->request('GET', '/meta');
         $response = static::$client->getResponse();
-        static::assertTrue($response->isSuccessful(), 'Response of Request /meta is not successful. The MetaBundle is failing.');
+        static::assertTrue($response->isSuccessful(), 'Response of Request /meta is not successful. The LongitudeOneMetaBundle is failing.');
         static::assertStringContainsString('Description for /meta url', $response->getContent());
         static::assertStringContainsString('Image for /meta url', $response->getContent());
         static::assertStringContainsString('Title for /meta url', $response->getContent());
@@ -69,9 +69,9 @@ class FooControllerTest extends WebTestCase
         $response = static::$client->getResponse();
         static::assertTrue($response->isSuccessful());
 
-        static::assertStringContainsString('Description contains a &quot;quote&quot; for /quote url', $response->getContent(), 'MetaBundle is no more quote-proof');
-        static::assertStringContainsString('Image contains a &quot;quote&quot; for /quote url', $response->getContent(), 'MetaBundle is no more quote-proof');
-        static::assertStringContainsString('Title contains a &quot;quote&quot; for /quote url', $response->getContent(), 'MetaBundle is no more quote-proof');
+        static::assertStringContainsString('Description contains a &quot;quote&quot; for /quote url', $response->getContent(), 'LongitudeOneMetaBundle is no more quote-proof');
+        static::assertStringContainsString('Image contains a &quot;quote&quot; for /quote url', $response->getContent(), 'LongitudeOneMetaBundle is no more quote-proof');
+        static::assertStringContainsString('Title contains a &quot;quote&quot; for /quote url', $response->getContent(), 'LongitudeOneMetaBundle is no more quote-proof');
     }
 
     public function testMetaWithInvalidArgument(): void

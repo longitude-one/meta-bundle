@@ -1,4 +1,4 @@
-meta:
+longitude_one_meta:
   defaults:
     description: 'My default description'
     'og:image': 'My default image'

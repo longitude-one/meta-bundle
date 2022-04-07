@@ -14,7 +14,7 @@ namespace LongitudeOne\MetaBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class MetaBundle extends Bundle
+class LongitudeOneMetaBundle extends Bundle
 {
     public function getPath(): string
     {

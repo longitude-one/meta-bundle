@@ -17,7 +17,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
-class MetaExtension extends Extension
+class LongitudeOneMetaExtension extends Extension
 {
     /**
      * {@inheritDoc}

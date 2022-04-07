@@ -14,7 +14,7 @@ namespace LongitudeOne\MetaBundle\Tests\App;
 
 use Exception;
 use JetBrains\PhpStorm\Pure;
-use LongitudeOne\MetaBundle\MetaBundle;
+use LongitudeOne\MetaBundle\LongitudeOneMetaBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -27,8 +27,8 @@ class AppKernel extends Kernel
     {
         return [
             new FrameworkBundle(),
-            new MetaBundle(),
             new TwigBundle(),
+            new LongitudeOneMetaBundle(),
         ];
     }
 
@@ -38,8 +38,8 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
         $loader->load(__DIR__.'/config/config.yaml');
-        $loader->load(__DIR__.'/config/meta.yaml');
         $loader->load(__DIR__.'/config/services.yaml');
         $loader->load(__DIR__.'/config/twig.yaml');
+        $loader->load(__DIR__.'/config/meta.yaml');
     }
 }
