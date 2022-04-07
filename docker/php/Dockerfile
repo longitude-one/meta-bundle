@@ -1,4 +1,4 @@
-FROM php:8-fpm-alpine
+FROM php:7.4-fpm-alpine
 
 #LOAD PHP.INI development
 #CMD cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini

@@ -3,7 +3,8 @@
 /**
  * Meta Bundle
  *
- * PHP 8 | Symfony 5.4 | 6
+ * PHP 7.4|8
+ * Symfony 5.4 | 6
  *
  * Copyright LongitudeOne - Alexandre Tranchant
  *

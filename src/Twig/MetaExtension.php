@@ -3,7 +3,8 @@
 /**
  * Meta Bundle
  *
- * PHP 8 | Symfony 5.4 | 6
+ * PHP 7.4|8
+ * Symfony 5.4 | 6
  *
  * Copyright LongitudeOne - Alexandre Tranchant
  *
@@ -19,9 +20,11 @@ use Twig\TwigFunction;
 
 class MetaExtension extends AbstractExtension
 {
-    public function __construct(
-        private MetaService $service
-    ) {
+    private MetaService $service;
+
+    public function __construct(MetaService $service)
+    {
+        $this->service = $service;
     }
 
     /**

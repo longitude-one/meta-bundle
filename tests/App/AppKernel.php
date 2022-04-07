@@ -3,7 +3,8 @@
 /**
  * Meta Bundle
  *
- * PHP 8 | Symfony 5.4 | 6
+ * PHP 7.4|8
+ * Symfony 5.4 | 6
  *
  * Copyright LongitudeOne - Alexandre Tranchant
  *
@@ -13,7 +14,6 @@
 namespace LongitudeOne\MetaBundle\Tests\App;
 
 use Exception;
-use JetBrains\PhpStorm\Pure;
 use LongitudeOne\MetaBundle\LongitudeOneMetaBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
@@ -22,7 +22,6 @@ use Symfony\Component\HttpKernel\Kernel;
 
 class AppKernel extends Kernel
 {
-    #[Pure]
     public function registerBundles(): iterable
     {
         return [

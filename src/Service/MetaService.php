@@ -3,7 +3,8 @@
 /**
  * Meta Bundle
  *
- * PHP 8 | Symfony 5.4 | 6
+ * PHP 7.4|8
+ * Symfony 5.4 | 6
  *
  * Copyright LongitudeOne - Alexandre Tranchant
  *
@@ -18,11 +19,18 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class MetaService implements MetaServiceInterface
 {
+    private array $defaults;
+    private array $paths;
+    private RequestStack $requestStack;
+
     public function __construct(
-        private array $defaults,
-        private array $paths,
-        private RequestStack $requestStack
+        array $defaults,
+        array $paths,
+        RequestStack $requestStack
     ) {
+        $this->requestStack = $requestStack;
+        $this->paths = $paths;
+        $this->defaults = $defaults;
     }
 
     public function getMetaContent(string $metaTag): string
@@ -40,7 +48,10 @@ class MetaService implements MetaServiceInterface
         throw new InvalidArgumentException(sprintf('"%s" is not a valid meta-tag. Did you mispell it ? Did you miss to declare it in your configuration files? By default, the configuration is in the /config/package/meta.yml file)', $metaTag));
     }
 
-    private function getMetaForCurrentPathInfo(string $meta): mixed
+    /**
+     * @return false|string
+     */
+    private function getMetaForCurrentPathInfo(string $meta)
     {
         $request = $this->requestStack->getCurrentRequest();
 
